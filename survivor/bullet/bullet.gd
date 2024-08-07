@@ -8,6 +8,7 @@ var damage = 1
 
 
 func _process(delta):
+	
 	velocity = dir * speed
 	move_and_slide()
 	pass

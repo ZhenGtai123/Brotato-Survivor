@@ -37,3 +37,4 @@ func _process(delta):
 		var rad = unit * i + current_angle  # Add the current angle to the unit angle
 		var end_pos = Vector2(radius, 0).rotated(rad)
 		weapon.position = end_pos
+	pass

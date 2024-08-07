@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://bullet/bullet.gd" id="1_1obi0"]
 [ext_resource type="Texture2D" uid="uid://dr6yottc1okvm" path="res://bullet/assets/tile_0359.png" id="1_t3brq"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr144"]
+radius = 4.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_edoor"]
 animations = [{
 "frames": [{
@@ -14,19 +17,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pr144"]
-radius = 4.0
-
 [node name="bullet" type="CharacterBody2D"]
 z_index = 20
-scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_1obi0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_edoor")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pr144")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_edoor")
