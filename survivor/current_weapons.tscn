@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7orb2jjcj0dk"]
+
+[ext_resource type="Script" path="res://current_weapons.gd" id="1_rnk6g"]
+[ext_resource type="PackedScene" uid="uid://f8ma6s8k5xwm" path="res://weapon.tscn" id="1_xjv58"]
+
+[node name="current_weapons" type="Node2D"]
+script = ExtResource("1_rnk6g")
+
+[node name="Weapon" parent="." instance=ExtResource("1_xjv58")]
+z_index = 10
+
+[node name="Weapon2" parent="." instance=ExtResource("1_xjv58")]
+z_index = 10
+
+[node name="Weapon3" parent="." instance=ExtResource("1_xjv58")]
+z_index = 10
