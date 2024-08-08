@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @onready var player1Ani = $AnimatedSprite2D
 @onready var play1 = $"."
-var dir = Vector2.ZERO
+@onready var dir = Vector2.ZERO
 @export var speed = 700
+var direction = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,7 +14,7 @@ func _ready():
 func _process(delta):
 	var self_pos = position
 	# Get input for movement
-	var direction = Vector2.ZERO
+	direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("right"):
 		direction.x += 1

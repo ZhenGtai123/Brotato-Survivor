@@ -1,14 +1,18 @@
-extends CharacterBody2D
+extends Area2D
 
 var dir = Vector2(1,0)
 var speed = 2000
-var damage = 1
+var damage = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 
-func _process(delta):
+func _physics_process(delta):
 	
-	velocity = dir * speed
-	move_and_slide()
-	pass
+	position += dir * speed
+
+	
+func _on_body_entered(body):
+	queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(damage)

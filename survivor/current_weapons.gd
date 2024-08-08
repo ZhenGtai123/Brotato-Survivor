@@ -1,6 +1,6 @@
 extends Node2D
 
-var radius = 230
+var radius = 100
 var num = 0
 
 var speed = 1.0   # Rotation speed in radians per second

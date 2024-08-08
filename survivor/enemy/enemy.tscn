@@ -29,3 +29,6 @@ sprite_frames = SubResource("SpriteFrames_sso5o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_nqfl1")
+
+[node name="mob" type="Node2D" parent="."]
+position = Vector2(0, 1)
