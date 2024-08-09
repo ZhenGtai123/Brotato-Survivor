@@ -6,6 +6,7 @@ extends Node2D
 @onready var bullet = preload("res://bullet/bullet.tscn")
 @onready var fire_position = $fire_position
 @onready var vscale =  Vector2(6,6)
+@onready var player_dir = Vector2(1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,7 +14,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if player.direction.x* player_dir.x< 0:
+		player_dir.x*=-1
 
 
 func _on_timer_timeout():
@@ -21,7 +23,6 @@ func _on_timer_timeout():
 	this_bullet.speed = speed
 	this_bullet.position = fire_position.global_position
 	this_bullet.scale = vscale
-	print(player.dir.x)
-	this_bullet.dir = Vector2(0,player.dir.x)
+	this_bullet.dir = player_dir
 	get_tree().root.add_child(this_bullet)
 	pass # Replace with function body.

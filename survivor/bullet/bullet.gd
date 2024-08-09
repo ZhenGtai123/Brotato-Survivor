@@ -9,7 +9,7 @@ var damage = 10
 
 func _physics_process(delta):
 	
-	position += dir * speed
+	position += dir * speed*delta
 
 	
 func _on_body_entered(body):
