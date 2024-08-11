@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://0wq6hksoodco"]
+[gd_scene load_steps=12 format=3 uid="uid://0wq6hksoodco"]
 
 [ext_resource type="Texture2D" uid="uid://c4jvs8aw4jp3k" path="res://asset/Tilemap/tilemap_packed.png" id="1_naac3"]
 [ext_resource type="PackedScene" uid="uid://flcqv06b10e" path="res://characters/player1.tscn" id="2_2jvrg"]
 [ext_resource type="PackedScene" uid="uid://c7orb2jjcj0dk" path="res://current_weapons.tscn" id="3_kdf7x"]
-[ext_resource type="PackedScene" uid="uid://bi5f1tsko6rp6" path="res://cur_enemies.tscn" id="4_i1eir"]
+[ext_resource type="PackedScene" uid="uid://bi5f1tsko6rp6" path="res://utility/enemy_spawner.tscn" id="4_i1eir"]
+[ext_resource type="PackedScene" uid="uid://dh6gjm572a4eo" path="res://mines_weapon.tscn" id="4_xrrp2"]
+[ext_resource type="PackedScene" uid="uid://ewxuecoqb3ho" path="res://enemy/enemy.tscn" id="6_4nj2o"]
+[ext_resource type="Script" path="res://utility/spawn_info.gd" id="7_c0svj"]
 
 [sub_resource type="GDScript" id="GDScript_x5rxr"]
 script/source = "extends Node2D
@@ -453,6 +456,14 @@ texture = ExtResource("1_naac3")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e1am2")
 
+[sub_resource type="Resource" id="Resource_38q68"]
+script = ExtResource("7_c0svj")
+time_start = 0
+time_end = 30
+enemy = ExtResource("6_4nj2o")
+enemy_num = 20
+enemy_spawn_delay = 2
+
 [node name="Map" type="Node2D"]
 script = SubResource("GDScript_x5rxr")
 
@@ -489,4 +500,9 @@ position = Vector2(941, 540)
 
 [node name="current_weapons" parent="player" instance=ExtResource("3_kdf7x")]
 
-[node name="cur_enemies" parent="." instance=ExtResource("4_i1eir")]
+[node name="mines_weapon" parent="player" instance=ExtResource("4_xrrp2")]
+position = Vector2(-939, -531)
+scale = Vector2(1, 1)
+
+[node name="enemy_spawner" parent="." instance=ExtResource("4_i1eir")]
+spawns = Array[ExtResource("7_c0svj")]([SubResource("Resource_38q68")])

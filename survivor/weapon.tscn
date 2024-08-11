@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://f8ma6s8k5xwm"]
+[gd_scene load_steps=6 format=3 uid="uid://f8ma6s8k5xwm"]
 
 [ext_resource type="Script" path="res://weapon.gd" id="1_6ebhg"]
 [ext_resource type="Texture2D" uid="uid://bx8m2656syk77" path="res://weapon/assets/tile_0349.png" id="1_8lq0c"]
 [ext_resource type="PackedScene" uid="uid://dhsh3gerbe1pj" path="res://bullet/bullet.tscn" id="3_nuqkj"]
+[ext_resource type="PackedScene" uid="uid://cnbkbs5oun2yx" path="res://weapon/dead_shot.tscn" id="4_2lel8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7cbnj"]
 animations = [{
@@ -30,4 +31,7 @@ autostart = true
 [node name="bullet" parent="." instance=ExtResource("3_nuqkj")]
 position = Vector2(6.33333, 0.333333)
 
+[node name="dead_shot" parent="." instance=ExtResource("4_2lel8")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="bullet" method="_on_timer_timeout"]

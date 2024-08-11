@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh6gjm572a4eo"]
+
+[ext_resource type="Script" path="res://mines_weapon.gd" id="1_e51x1"]
+[ext_resource type="PackedScene" uid="uid://cq6a0sv4xqbla" path="res://mines.tscn" id="1_q7aol"]
+
+[node name="mines_weapon" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_e51x1")
+
+[node name="mine" parent="." instance=ExtResource("1_q7aol")]
+visible = false
+position = Vector2(0.333333, 0)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="fire_position" type="Marker2D" parent="."]
+position = Vector2(0.666667, 0.666667)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
