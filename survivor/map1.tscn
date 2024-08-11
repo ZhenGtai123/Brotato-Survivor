@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://0wq6hksoodco"]
+[gd_scene load_steps=9 format=3 uid="uid://0wq6hksoodco"]
 
 [ext_resource type="Texture2D" uid="uid://c4jvs8aw4jp3k" path="res://asset/Tilemap/tilemap_packed.png" id="1_naac3"]
 [ext_resource type="PackedScene" uid="uid://flcqv06b10e" path="res://characters/player1.tscn" id="2_2jvrg"]
 [ext_resource type="PackedScene" uid="uid://c7orb2jjcj0dk" path="res://current_weapons.tscn" id="3_kdf7x"]
-[ext_resource type="PackedScene" uid="uid://bi5f1tsko6rp6" path="res://cur_enemies.tscn" id="4_i1eir"]
+[ext_resource type="PackedScene" uid="uid://bi5f1tsko6rp6" path="res://utility/enemy_spawner.tscn" id="4_i1eir"]
+[ext_resource type="PackedScene" uid="uid://dh6gjm572a4eo" path="res://mines_weapon.tscn" id="4_xrrp2"]
 
 [sub_resource type="GDScript" id="GDScript_x5rxr"]
 script/source = "extends Node2D
@@ -469,9 +470,13 @@ layer_2/tile_data = PackedInt32Array()
 layer_3/name = "wall"
 layer_3/tile_data = PackedInt32Array(65535, 720896, 3, 131071, 720896, 4, 196607, 720896, 5, 262143, 720896, 3, 327679, 720896, 4, 393215, 720896, 5, 458751, 720896, 3, 524287, 720896, 4, 589823, 720896, 5, 655359, 720896, 3, 720895, 720896, 4, 786431, 720896, 5, 851967, 720896, 3, 917503, 720896, 4, 983039, 720896, 5, 1048575, 720896, 3, 1048576, 524288, 6, 1048577, 589824, 6, 1048578, 655360, 6, 1048579, 524288, 6, 1048580, 589824, 6, 1048581, 655360, 6, 1048582, 524288, 6, 1048583, 589824, 6, 1048584, 655360, 6, 1048585, 524288, 6, 1048586, 589824, 6, 1048587, 655360, 6, 1048588, 524288, 6, 1048589, 589824, 6, 1048590, 655360, 6, 1048591, 524288, 6, 1048592, 589824, 6, 1048593, 655360, 6, 1048594, 524288, 6, 1048595, 589824, 6, 1048596, 655360, 6, 1048597, 524288, 6, 1048598, 589824, 6, 1048599, 655360, 6, 1048600, 524288, 6, 1048601, 589824, 6, 1048602, 655360, 6, 1048603, 524288, 6, 1048604, 589824, 6, 29, 655360, 5, 65565, 655360, 3, 131101, 655360, 4, 196637, 655360, 5, 262173, 655360, 3, 327709, 655360, 4, 393245, 655360, 5, 458781, 655360, 3, 524317, 655360, 4, 589853, 655360, 5, 655389, 655360, 3, 720925, 655360, 4, 786461, 655360, 5, 851997, 655360, 3, 917533, 655360, 4, 983069, 655360, 5, -65536, 524288, 3, -65535, 589824, 3, -65534, 655360, 3, -65533, 524288, 3, -65532, 589824, 3, -65531, 655360, 3, -65530, 524288, 3, -65529, 589824, 3, -65528, 655360, 3, -65527, 524288, 3, -65526, 589824, 3, -65525, 655360, 3, -65524, 524288, 3, -65523, 589824, 3, -65522, 655360, 3, -65521, 524288, 3, -65520, 589824, 3, -65519, 655360, 3, -65518, 524288, 3, -65517, 589824, 3, -65516, 655360, 3, -65515, 524288, 3, -65514, 589824, 3, -65513, 655360, 3, -65512, 524288, 3, -65511, 589824, 3, -65510, 655360, 3, -65509, 524288, 3, -65508, 589824, 3)
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("2_2jvrg")]
+[node name="player" parent="." instance=ExtResource("2_2jvrg")]
 position = Vector2(941, 540)
 
 [node name="current_weapons" parent="player" instance=ExtResource("3_kdf7x")]
 
-[node name="cur_enemies" parent="." instance=ExtResource("4_i1eir")]
+[node name="mines_weapon" parent="player" instance=ExtResource("4_xrrp2")]
+position = Vector2(-939, -531)
+scale = Vector2(1, 1)
+
+[node name="enemy_spawner" parent="." instance=ExtResource("4_i1eir")]

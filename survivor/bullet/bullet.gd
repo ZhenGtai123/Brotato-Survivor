@@ -1,18 +1,22 @@
 extends Area2D
-
+var maxDistance = 4000
 var dir = Vector2(1,0)
 var speed = 2000
 var damage = 10
+var distanceTraveled = 0
+var distance = 0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-
-
-func _physics_process(delta):
-	
-	position += dir * speed*delta
-
+func _process(delta):
+	distance = speed * delta
+	position += dir * distance
+	distanceTraveled +=  distance
+	if distanceTraveled > maxDistance:
+		queue_free()
 	
 func _on_body_entered(body):
 	queue_free()
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
+
+	
+

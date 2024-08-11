@@ -4,6 +4,7 @@ extends Node2D
 @onready var speed = 2000
 @onready var timer = $Timer
 @onready var bullet = preload("res://bullet/bullet.tscn")
+@onready var dead_shot = preload("res://weapon/dead_shot.tscn")
 @onready var fire_position = $fire_position
 @onready var vscale =  Vector2(6,6)
 @onready var player_dir = Vector2(1,0)
@@ -25,4 +26,7 @@ func _on_timer_timeout():
 	this_bullet.scale = vscale
 	this_bullet.dir = player_dir
 	get_tree().root.add_child(this_bullet)
+	var this_dead_shot = dead_shot.instantiate()
+	this_dead_shot.position = fire_position.global_position
+	get_tree().root.add_child(this_dead_shot)
 	pass # Replace with function body.

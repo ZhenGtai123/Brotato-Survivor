@@ -34,8 +34,8 @@ func _process(delta):
 		player1Ani.play("walk")
 		
 	if direction.x < 0:
-		player1Ani.flip_h = true
-	elif direction.x > 0:
 		player1Ani.flip_h = false
+	elif direction.x > 0:
+		player1Ani.flip_h = true
 	
 	pass

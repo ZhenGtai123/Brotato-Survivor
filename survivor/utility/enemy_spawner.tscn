@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi5f1tsko6rp6"]
+
+[ext_resource type="Script" path="res://utility/spawn_info.gd" id="1_c2bid"]
+[ext_resource type="PackedScene" uid="uid://ewxuecoqb3ho" path="res://enemy/enemy.tscn" id="1_npp5m"]
+
+[sub_resource type="GDScript" id="GDScript_8av6j"]
+script/source = "extends Node2D
+
+@export var spawns: Array[Spawn_info] = []
+"
+
+[sub_resource type="Resource" id="Resource_oynsh"]
+script = ExtResource("1_c2bid")
+time_start = 0
+time_end = 0
+enemy_num = 0
+enemy_spawn_delay = 0
+
+[node name="enemy_spawner" type="Node2D"]
+script = SubResource("GDScript_8av6j")
+spawns = Array[ExtResource("1_c2bid")]([SubResource("Resource_oynsh")])
+
+[node name="enemy" parent="." instance=ExtResource("1_npp5m")]
+position = Vector2(343, 5)
+
+[node name="enemy2" parent="." instance=ExtResource("1_npp5m")]
+position = Vector2(128, 502)
+
+[node name="enemy3" parent="." instance=ExtResource("1_npp5m")]
+position = Vector2(778, 263)
