@@ -2,7 +2,7 @@ extends Area2D
 var maxDistance = 4000
 var dir = Vector2(1,0)
 var speed = 2000
-var damage = 10
+var damage = 10 * Global.dmg_rate
 var distanceTraveled = 0
 var distance = 0
 
