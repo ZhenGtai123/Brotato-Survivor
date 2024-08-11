@@ -30,7 +30,9 @@ script = ExtResource("1_kvffi")
 shape = SubResource("CircleShape2D_k4lwc")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(23, -0.999999)
+scale = Vector2(2, 1)
+skew = 1.16937
 sprite_frames = SubResource("SpriteFrames_gg5t0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
