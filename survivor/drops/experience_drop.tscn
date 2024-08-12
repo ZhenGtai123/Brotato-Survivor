@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://psgob1shjygq"]
+[gd_scene load_steps=4 format=3 uid="uid://psgob1shjygq"]
 
 [ext_resource type="Script" path="res://drops/experience_drop.gd" id="1_5jee3"]
 [ext_resource type="Texture2D" uid="uid://da1ashgidw2t2" path="res://drops/assets/gemGreen.png" id="2_u4d7b"]
-[ext_resource type="AudioStream" uid="uid://cacevdnji5b44" path="res://drops/assets/powerUp8.wav" id="3_hxc3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7c5hf"]
-radius = 17.2627
+radius = 30.4138
 
-[node name="experience_drop" type="Area2D" groups=["loot"]]
+[node name="experience_drop" type="Area2D" groups=["exp", "loot"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_5jee3")
@@ -18,10 +17,8 @@ scale = Vector2(0.648438, 0.648438)
 texture = ExtResource("2_u4d7b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_7c5hf")
 
-[node name="collected" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_hxc3n")
-volume_db = -11.39
-
-[connection signal="finished" from="collected" to="." method="_on_collected_finished"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

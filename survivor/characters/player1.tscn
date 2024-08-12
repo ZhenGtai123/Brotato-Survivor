@@ -1,9 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://flcqv06b10e"]
+[gd_scene load_steps=24 format=3 uid="uid://flcqv06b10e"]
 
 [ext_resource type="Script" path="res://characters/player1.gd" id="1_piv27"]
 [ext_resource type="Texture2D" uid="uid://dtvhybeh675qs" path="res://characters/muerta_idle.png" id="2_vnwge"]
 [ext_resource type="Texture2D" uid="uid://dm3872eny3mpi" path="res://characters/muerta_running.png" id="3_cxh1q"]
 [ext_resource type="Texture2D" uid="uid://dmd7cw7amxmf3" path="res://characters/shadow.png" id="4_smstx"]
+[ext_resource type="Texture2D" uid="uid://c4wcrcpgnh2wf" path="res://ui/exp_bar_under.png" id="5_s8ffa"]
+[ext_resource type="Texture2D" uid="uid://64mavakg788m" path="res://ui/exp_bar.png" id="6_b0ier"]
+[ext_resource type="AudioStream" uid="uid://cacevdnji5b44" path="res://drops/assets/powerUp8.wav" id="7_krcel"]
+[ext_resource type="Script" path="res://characters/collected.gd" id="8_1buhj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ougq"]
 radius = 55.0
@@ -100,7 +104,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5sj56"]
-radius = 157.003
+radius = 207.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5ym3"]
 radius = 54.8179
@@ -152,6 +156,37 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collect_Area"]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_j5ym3")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUI/GUI"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 10.0
+offset_right = 451.0
+offset_bottom = 27.0
+scale = Vector2(1.5, 1.5)
+texture_under = ExtResource("5_s8ffa")
+texture_progress = ExtResource("6_b0ier")
+
+[node name="LabelLevel" type="Label" parent="GUI/GUI/ExperienceBar"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = -5.0
+offset_right = 339.0
+offset_bottom = 19.0
+text = "Level 1"
+
+[node name="collected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_krcel")
+volume_db = -10.4
+script = ExtResource("8_1buhj")
 
 [connection signal="area_entered" from="Grab_Area" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="Collect_Area" to="." method="_on_collect_area_area_entered"]

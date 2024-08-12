@@ -6,11 +6,12 @@ var blue = preload("res://drops/assets/gemBlue.png")
 var yellow = preload("res://drops/assets/gemYellow.png")
 
 var target = null 
-var speed = 0
+var speed = 2
 
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
-@onready var sound = $collected
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var sound = player.get_node("collected")
 
 func _ready():
 	if experience <= 10:
@@ -21,10 +22,11 @@ func _ready():
 		sprite.texture = red
 	elif experience <= 100:	
 		sprite.texture = yellow
+		
 func _physics_process(delta):
 	if target != null:
 		global_position = global_position.move_toward(target.global_position,speed)
-		speed+=4*delta
+		speed+=8*delta
 		
 func collect():
 	sound.play()
