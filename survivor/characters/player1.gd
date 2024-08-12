@@ -6,9 +6,16 @@ extends CharacterBody2D
 @onready var direction = Vector2.ZERO
 @onready var player_face = Vector2(-1,0)
 
+
+@onready var exp_bar = get_node("GUI/GUI/ExperienceBar")
+@onready var label_level = get_node("GUI/GUI/ExperienceBar/LabelLevel")  
+
+
+
 var dir_lock = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_exp_bar(experience, calculate_experience_cap())
 	pass # Replace with function body.
 
 
@@ -69,12 +76,15 @@ func calculate_experience(exp):
 	if(experience + collected_experience) >= exp_required:
 		collected_experience -= exp_required - experience
 		player_level += 1
-		print("level ", player_level)
+		label_level.text = str("Level " , player_level)
 		experience = 0
 		exp_required = calculate_experience_cap()
+		calculate_experience(0)
 	else: 
 		experience += collected_experience
 		collected_experience = 0
+	set_exp_bar(experience, exp_required)
+	
 func calculate_experience_cap():
 	var exp_cap = player_level
 	if player_level < 20:
@@ -84,3 +94,12 @@ func calculate_experience_cap():
 	else:
 		exp_cap = 255 + (player_level-39) * 12
 	return exp_cap
+#func levelup():
+	#sndLevelUp.play()
+	#lblLevel
+
+
+func set_exp_bar(set_value = 1, set_max_value = 100):
+	exp_bar.value = set_value
+	exp_bar.max_value = set_max_value
+	
